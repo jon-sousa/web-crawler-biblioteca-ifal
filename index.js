@@ -75,7 +75,7 @@ app.post('/', async (req, res) => {
         if(semDisponibilidade){
             return res.status(200).json(livros)
         }
-        
+
         anchors = await page.$$('td a')
         console.log(JSON.stringify(anchors))
         
@@ -135,4 +135,6 @@ app.post('/', async (req, res) => {
     
 });
 
-app.listen(8080, () => console.log('Server listening 8080 port'))
+var port = normalizePort(process.env.PORT || '8080');
+app.set('port', port);
+app.listen(port, () => console.log(`Server listening ${port} port`))
