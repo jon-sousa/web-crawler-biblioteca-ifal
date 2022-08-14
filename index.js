@@ -1,9 +1,12 @@
+require('dotenv').config()
 const express = require('express')
 const puppeteer = require('puppeteer')
 const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
 
 app.post('/', async (req, res) => {
     const browser = await puppeteer.launch({headless: true});
@@ -135,6 +138,5 @@ app.post('/', async (req, res) => {
     
 });
 
-var port = normalizePort(process.env.PORT || '8080');
-app.set('port', port);
+var port = process.env.PORT || '8080' 
 app.listen(port, () => console.log(`Server listening ${port} port`))
