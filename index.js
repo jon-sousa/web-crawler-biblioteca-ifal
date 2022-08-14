@@ -9,7 +9,10 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.post('/', async (req, res) => {
-    const browser = await puppeteer.launch({headless: true});
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox','--disable-setuid-sandbox']
+    });
     try{
         tipo = req.body.tipo
         campo = req.body.campo
@@ -133,9 +136,7 @@ app.post('/', async (req, res) => {
         console.log(e)
         await browser.close()
         return res.status(500).json(e)
-    } 
-    //await browser.close();
-    
+    }     
 });
 
 var port = process.env.PORT || '8080' 
