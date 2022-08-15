@@ -12,8 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "",
     "express": "^4.18.1",
-    "puppeteer": "^16.1.0",
-    "dotenv": ""
+    "puppeteer": "^16.1.0"
   }
 }
